@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#172c48"><meta name="description" content="Local-first fictional universe management system">
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+<title>Universe ERP</title>
+</head>
+<body>
+<header><div class="brand"><div class="mark">✦</div><div><b>UNIVERSE ERP</b><small>Fictional Universe Management</small></div></div><button id="installBtn" class="ghost" hidden>Install</button></header>
+<main>
+<section id="dashboard" class="view active">
+  <div class="hero"><small>YOUR FICTIONAL UNIVERSE</small><h1>Command centre</h1><p>One universe. Multiple series. Connected story data.</p></div>
+  <div class="stats" id="stats"></div>
+  <div class="section-head"><h2>Quick capture</h2></div>
+  <div class="quick-grid">
+    <button data-new="Character">＋ Character</button><button data-new="Location">＋ Location</button>
+    <button data-new="Organization">＋ Organization</button><button data-new="Event">＋ Event</button>
+    <button data-new="Interaction">＋ Interaction</button><button data-new="Series">＋ Series</button>
+  </div>
+  <div class="section-head"><h2>Recent activity</h2></div><div id="recent" class="panel muted">No records yet. Start by adding a character or event.</div>
+  <div class="notice"><b>Local-first storage</b><br>Your data stays in this browser on this device. Export backups regularly; clearing Safari website data can erase it.</div>
+</section>
+
+<section id="master" class="view">
+  <div class="page-title"><div><small>MASTER DATA</small><h1>Universe entities</h1></div><button class="primary" id="addEntity">＋ Add</button></div>
+  <input id="entitySearch" class="search" placeholder="Search entities…">
+  <div class="chips" id="entityTypes"></div><div id="entityList"></div>
+</section>
+
+<section id="transactions" class="view">
+  <div class="page-title"><div><small>TRANSACTION DATA</small><h1>What happens</h1></div><button class="primary" id="addEvent">＋ Record</button></div>
+  <div class="chips" id="txTypes"></div><div id="txList"></div>
+</section>
+
+<section id="story" class="view">
+  <div class="page-title"><div><small>STORY MANAGEMENT</small><h1>Series & books</h1></div><button class="primary" id="addSeries">＋ Series</button></div>
+  <div id="seriesList"></div>
+</section>
+
+<section id="timeline" class="view">
+  <div class="page-title"><div><small>CHRONOLOGY</small><h1>Universe timeline</h1></div><button class="primary" id="addTimelineEvent">＋ Event</button></div>
+  <p class="muted">Events are ordered by in-universe date. Narrative placement (book/chapter/scene) is stored separately, allowing flashbacks and simultaneous events.</p>
+  <div id="timelineList"></div>
+</section>
+
+<section id="backup" class="view">
+  <div class="page-title"><div><small>DATA MANAGEMENT</small><h1>Backup & restore</h1></div></div>
+  <div class="panel"><h3>Export complete backup</h3><p class="muted">JSON contains all tables, IDs, links and custom fields.</p><button class="primary wide" id="exportJson">Download JSON backup</button></div>
+  <div class="panel"><h3>Restore backup</h3><p class="muted">Restoring replaces the current local database. Export a backup first.</p><input type="file" id="importFile" accept=".json,application/json"><button class="danger wide" id="importJson">Restore selected backup</button></div>
+  <div class="panel"><h3>Export entity table</h3><select id="csvTable"></select><button class="secondary wide" id="exportCsv">Download CSV</button></div>
+  <div class="panel"><h3>Database status</h3><div id="dbStatus" class="muted"></div><button id="seedDemo" class="secondary wide">Load optional example data</button><button id="clearData" class="danger wide">Delete all local data</button></div>
+</section>
+</main>
+<nav class="bottom-nav">
+<button class="nav active" data-view="dashboard"><span>⌂</span>Home</button>
+<button class="nav" data-view="master"><span>▦</span>Master</button>
+<button class="nav" data-view="transactions"><span>⇄</span>Activity</button>
+<button class="nav" data-view="story"><span>▤</span>Story</button>
+<button class="nav" data-view="timeline"><span>◷</span>Timeline</button>
+<button class="nav" data-view="backup"><span>⚙</span>Data</button>
+</nav>
+<div id="modal" class="modal" aria-hidden="true"><div class="sheet"><div class="sheet-head"><h2 id="modalTitle">New record</h2><button id="closeModal" class="icon-btn">✕</button></div><form id="recordForm"><div id="formFields"></div><div class="form-actions"><button type="button" id="cancelForm" class="secondary">Cancel</button><button type="submit" class="primary">Save record</button></div></form></div></div>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,11 @@
+{
+  "name": "Universe ERP",
+  "short_name": "Universe ERP",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f9",
+  "theme_color": "#172c48",
+  "description": "Local-first fictional universe management system",
+  "icons": []
+}
